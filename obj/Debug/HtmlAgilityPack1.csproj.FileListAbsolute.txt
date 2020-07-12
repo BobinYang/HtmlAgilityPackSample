@@ -12,3 +12,17 @@ C:\Users\bobin.yang\Source\Repos\WindowsFormsApp3\obj\Debug\HtmlAgilityPack1.csp
 C:\Users\bobin.yang\Source\Repos\WindowsFormsApp3\obj\Debug\HtmlAgilityPack1.csproj.CopyComplete
 C:\Users\bobin.yang\Source\Repos\WindowsFormsApp3\obj\Debug\HtmlAgilityPack1.exe
 C:\Users\bobin.yang\Source\Repos\WindowsFormsApp3\obj\Debug\HtmlAgilityPack1.pdb
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\bin\Debug\HtmlAgilityPack1.exe.config
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\bin\Debug\HtmlAgilityPack1.exe
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\bin\Debug\HtmlAgilityPack1.pdb
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.csprojAssemblyReference.cache
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\WindowsFormsApp3.Form1.resources
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.Properties.Resources.resources
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.csproj.GenerateResource.cache
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.csproj.CopyComplete
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.exe
+C:\Users\Admin\Source\Repos\HtmlAgilityPackSample\obj\Debug\HtmlAgilityPack1.pdb

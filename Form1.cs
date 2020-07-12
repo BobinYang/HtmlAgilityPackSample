@@ -22,6 +22,8 @@ namespace WindowsFormsApp3
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             this.richTextBox1.Clear();
             //网页地址：
             string Url = this.textBox1.Text.Trim();
@@ -33,63 +35,106 @@ namespace WindowsFormsApp3
             htmlWeb.OverrideEncoding = Encoding.UTF8;
 
             HtmlAgilityPack.HtmlDocument htmlDoc = htmlWeb.Load(Url);
-
-            HtmlNode node = htmlDoc.DocumentNode.SelectSingleNode("//main[@id='main']");
-
-            //去掉英文翻译
-            var a = node.SelectNodes("//span[@class='sxs-lookup']");
-            foreach (HtmlNode b in a)
-
-            {
-                b.Remove();
-            }
-
-            string src = "";
-            //图片相对路径改成绝对路径
-            var imgNode = node.SelectNodes("//img[@data-linktype='relative-path']");
-            foreach (HtmlNode node1 in imgNode)
-            {
-                src = node1.GetAttributeValue("src", "");
-                var url = new Uri(htmlWeb.ResponseUri, src);
-                node1.SetAttributeValue("src", url.AbsoluteUri);
-            }
-
-            //链接路径转换
-            var hrefNode = node.SelectNodes("//a[@data-linktype='relative-path']|//a[@data-linktype='absolute-path']");
-            foreach (HtmlNode node1 in hrefNode)
-            {
-                src = node1.GetAttributeValue("href", "");
-                var url = new Uri(htmlWeb.ResponseUri, src);
-                node1.SetAttributeValue("href", url.AbsoluteUri);
-            }
-
-            //找到所有的H2标签，然后加上顺序。
-            var h2Node = node.SelectNodes("//h2");
-            var arr = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十" };
-            if (h2Node != null)
-            {
-                for (int i = 0; i < h2Node.Count; i++)
-                {
-                    h2Node[i].InnerHtml = arr[i] + "、" + h2Node[i].InnerHtml;
-                    //找到所有的H3标签，然后加上顺序。
-
-                    var h3Node = h2Node[i].SelectNodes("following-sibling::h2|following-sibling::h3");
-                    if (h3Node is null)
-                        break;
-                    for (int j = 0; j < h3Node.Count; j++)
-                    {
-                        if (h3Node[j].Name == "h2")
-                            break;
-                        else
-                            h3Node[j].InnerHtml = (j + 1) + "、" + h3Node[j].InnerHtml;
-                    }
-                }
-            }
+            HtmlNode node;
             HtmlNode myNOde = htmlDoc.CreateElement("div");
+            var uri = new Uri(Url, UriKind.Absolute);
+            switch (uri.Host)
+            {
+                case "docs.microsoft.com":
+                    node = htmlDoc.DocumentNode.SelectSingleNode("//main[@id='main']");
 
-            //去掉前面无用的部分
-            var OK = node.SelectNodes("nav[1]/following-sibling::*");
-            myNOde.AppendChildren(OK);
+                    //去掉英文翻译
+                    var a = node.SelectNodes("//span[@class='sxs-lookup']");
+                    foreach (HtmlNode b in a)
+
+                    {
+                        b.Remove();
+                    }
+
+                    string src = "";
+                    //图片相对路径改成绝对路径
+                    var imgNode = node.SelectNodes("//img[@data-linktype='relative-path']");
+                    foreach (HtmlNode node1 in imgNode)
+                    {
+                        src = node1.GetAttributeValue("src", "");
+                        var url = new Uri(htmlWeb.ResponseUri, src);
+                        node1.SetAttributeValue("src", url.AbsoluteUri);
+                    }
+
+                    //链接路径转换
+                    var hrefNode = node.SelectNodes("//a[@data-linktype='relative-path']|//a[@data-linktype='absolute-path']");
+                    foreach (HtmlNode node1 in hrefNode)
+                    {
+                        src = node1.GetAttributeValue("href", "");
+                        var url = new Uri(htmlWeb.ResponseUri, src);
+                        node1.SetAttributeValue("href", url.AbsoluteUri);
+                    }
+
+                    //找到所有的H2标签，然后加上顺序。
+                    var h2Node = node.SelectNodes("//h2");
+                    var arr = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十" };
+                    if (h2Node != null)
+                    {
+                        for (int i = 0; i < h2Node.Count; i++)
+                        {
+                            h2Node[i].InnerHtml = arr[i] + "、" + h2Node[i].InnerHtml;
+                            //找到所有的H3标签，然后加上顺序。
+
+                            var h3Node = h2Node[i].SelectNodes("following-sibling::h2|following-sibling::h3");
+                            if (h3Node is null)
+                                break;
+                            for (int j = 0; j < h3Node.Count; j++)
+                            {
+                                if (h3Node[j].Name == "h2")
+                                    break;
+                                else
+                                    h3Node[j].InnerHtml = (j + 1) + "、" + h3Node[j].InnerHtml;
+                            }
+                        }
+                    }
+
+
+                    //去掉前面无用的部分
+                    var OK = node.SelectNodes("nav[1]/following-sibling::*");
+                    myNOde.AppendChildren(OK);
+                    break;
+                case "www.cnblogs.com":
+                    node = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='cnblogs_post_body']");
+                    // https://www.cnblogs.com/doomclouds/p/13251785.html
+                    //如果存在H1，则把H2改成H3，H1改成H2
+
+
+                    //找到所有的H2标签，然后加上顺序。
+                    var h2Node1 = node.SelectNodes("//h2");
+                    var arr1 = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十" };
+                    if (h2Node1 != null)
+                    {
+                        for (int i = 0; i < h2Node1.Count; i++)
+                        {
+                            h2Node1[i].InnerHtml = arr1[i] + "、" + h2Node1[i].InnerHtml;
+                            //找到所有的H3标签，然后加上顺序。
+
+                            var h3Node = h2Node1[i].SelectNodes("following-sibling::h2|following-sibling::h3");
+                            if (h3Node is null)
+                                break;
+                            for (int j = 0; j < h3Node.Count; j++)
+                            {
+                                if (h3Node[j].Name == "h2")
+                                    break;
+                                else
+                                    h3Node[j].InnerHtml = (j + 1) + "、" + h3Node[j].InnerHtml;
+                            }
+                        }
+                    }
+                    var OK1 = node.SelectNodes("*");
+                    myNOde.AppendChildren(OK1);
+                    break;
+                default:
+                    break;
+            }
+
+
+
 
             //添加原文连接：
             HtmlNode nodeOriUrl = htmlDoc.CreateElement("p");
