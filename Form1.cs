@@ -129,6 +129,36 @@ namespace WindowsFormsApp3
                     var OK1 = node.SelectNodes("*");
                     myNOde.AppendChildren(OK1);
                     break;
+                case "blog.csdn.net":
+                    node = htmlDoc.DocumentNode.SelectSingleNode("//div[@id='content_views']");
+                    //如果存在H1，则把H2改成H3，H1改成H2
+
+
+                    //找到所有的H2标签，然后加上顺序。
+                    var h2Node3 = node.SelectNodes("//h2");
+                    var arr3 = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十" };
+                    if (h2Node3 != null)
+                    {
+                        for (int i = 0; i < h2Node3.Count; i++)
+                        {
+                            h2Node3[i].InnerHtml = arr3[i] + "、" + h2Node3[i].InnerHtml;
+                            //找到所有的H3标签，然后加上顺序。
+
+                            var h3Node = h2Node3[i].SelectNodes("following-sibling::h2|following-sibling::h3");
+                            if (h3Node is null)
+                                break;
+                            for (int j = 0; j < h3Node.Count; j++)
+                            {
+                                if (h3Node[j].Name == "h2")
+                                    break;
+                                else
+                                    h3Node[j].InnerHtml = (j + 1) + "、" + h3Node[j].InnerHtml;
+                            }
+                        }
+                    }
+                    var OK3 = node.SelectNodes("*");
+                    myNOde.AppendChildren(OK3);
+                    break;
                 default:
                     break;
             }
