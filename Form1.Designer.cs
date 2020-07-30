@@ -35,6 +35,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -45,7 +46,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(960, 52);
+            this.button1.Location = new System.Drawing.Point(1060, 51);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -118,6 +119,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
@@ -126,6 +128,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1395, 82);
             this.panel1.TabIndex = 0;
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Location = new System.Drawing.Point(13, 52);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(1041, 25);
+            this.txtTitle.TabIndex = 3;
             // 
             // Form1
             // 
@@ -156,6 +165,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtTitle;
     }
 }
 

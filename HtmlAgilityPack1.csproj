@@ -58,6 +58,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Processor\cnblogsP.cs" />
+    <Compile Include="Processor\csdnP.cs" />
+    <Compile Include="Processor\defaultP .cs" />
+    <Compile Include="Processor\IWebP.cs" />
+    <Compile Include="Processor\MicrosoftP.cs" />
+    <Compile Include="Processor\runoobP.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
